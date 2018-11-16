@@ -15,12 +15,15 @@
       "react"
     ],
     "plugins": [
+      "syntax-dynamic-import",
+      "react-loadable/babel",
       "transform-object-rest-spread"
     ]
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
+    "babel-plugin-syntax-dynamic-import": "^6.18.0",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
@@ -34,6 +37,7 @@
     "isomorphic-fetch": "^2.2.1",
     "react": "^16.3.0",
     "react-dom": "^16.3.0",
+    "react-loadable": "^5.5.0",
     "react-router-dom": "^4.2.2",
     "serialize-javascript": "^1.4.0"
   }

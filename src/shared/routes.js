@@ -1,7 +1,16 @@
-import Home from './Home'
-import Grid from './Grid'
-import { fetchPopularRepos } from './api'
+// import Home from './Home'
+// import Grid from './Grid'
+import Loadable from 'react-loadable';
+import { fetchPopularRepos } from './api';
 
+const Home = Loadable({
+  loader: () => import(/* webpackChunkName: "home" */'./Home'),
+  loading: () => null,
+})
+const Grid = Loadable({
+  loader: () => import(/* webpackChunkName: "grid" */'./Grid'),
+  loading: () => null,
+})
 const routes =  [
   {
     path: '/',
