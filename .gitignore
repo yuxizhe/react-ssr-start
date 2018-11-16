@@ -4,3 +4,4 @@ public
 server.js
 dist
 public
+*.log
