@@ -3,7 +3,8 @@ var webpack = require('webpack')
 var nodeExternals = require('webpack-node-externals')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const { ReactLoadablePlugin } = require('react-loadable/webpack')
-const WebpackBar = require('webpackbar')
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+// const WebpackBar = require('webpackbar')
 
 var browserConfig = {
   entry: './src/browser/index.js',
@@ -15,11 +16,26 @@ var browserConfig = {
   },
   // mode: 'development',
   module: {
-    rules: [{ 
-      test: /\.(js)$/, 
-      exclude: /(node_modules|bower_components)/,
-      use: 'babel-loader' 
-    }]
+    rules: [
+      {
+        test: /\.(js)$/,
+        exclude: /(node_modules|bower_components)/,
+        use: 'babel-loader'
+      },
+      {
+        test: /\.css$/,
+        exclude: /(node_modules|bower_components)/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          {
+            loader: 'css-loader',
+            options: {
+              importLoaders: 1
+            }
+          }
+        ]
+      }
+    ]
   },
   plugins: [
     new webpack.DefinePlugin({
@@ -29,10 +45,16 @@ var browserConfig = {
     new ReactLoadablePlugin({
       filename: './dist/react-loadable.json'
     }),
-    new WebpackBar({
-      color: '#f56be2',
-      name: 'client',
-    }),
+    new MiniCssExtractPlugin({
+      // Options similar to the same options in webpackOptions.output
+      // both options are optional
+      filename: "vender.[chunkhash].css",
+      chunkFilename: "[name].[chunkhash].css"
+    })
+    // new WebpackBar({
+    //   color: '#f56be2',
+    //   name: 'client'
+    // })
   ]
 }
 
@@ -48,10 +70,25 @@ var serverConfig = {
     libraryTarget: 'commonjs2'
   },
   module: {
-    rules: [{ 
-      test: /\.(js)$/,
-      use: 'babel-loader'
-    }]
+    rules: [
+      {
+        test: /\.(js)$/,
+        exclude: /(node_modules|bower_components)/,
+        use: 'babel-loader'
+      },
+      {
+        test: /\.css$/,
+        exclude: /(node_modules|bower_components)/,
+        use: [
+          {
+            loader: require.resolve('css-loader'),
+            options: {
+              importLoaders: 1
+            }
+          }
+        ]
+      }
+    ]
   },
   plugins: [
     new webpack.DefinePlugin({
@@ -61,10 +98,10 @@ var serverConfig = {
     new webpack.optimize.LimitChunkCountPlugin({
       maxChunks: 1
     }),
-    new WebpackBar({
-      color: '#c065f4',
-      name: 'server',
-    }),
+    // new WebpackBar({
+    //   color: 'green',
+    //   name: 'server'
+    // })
   ]
 }
 

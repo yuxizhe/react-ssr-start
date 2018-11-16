@@ -4,11 +4,11 @@ import Loadable from 'react-loadable';
 import { fetchPopularRepos } from './api';
 
 const Home = Loadable({
-  loader: () => import(/* webpackChunkName: "home" */'./Home'),
+  loader: () => import(/* webpackChunkName: "home" */'./pages/Home'),
   loading: () => null,
 })
 const Grid = Loadable({
-  loader: () => import(/* webpackChunkName: "grid" */'./Grid'),
+  loader: () => import(/* webpackChunkName: "grid" */'./pages/Grid'),
   loading: () => null,
 })
 const routes =  [
