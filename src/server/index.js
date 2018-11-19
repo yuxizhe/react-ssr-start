@@ -47,7 +47,7 @@ app.get("*", (req, res, next) => {
     <script>window.__INITIAL_DATA__ = ${serialize(data)}</script>
     ${styles
       .map(style => {
-        return `<link href="${style.file}" rel="stylesheet"/>`;
+        return `<link href="/${style.file}" rel="stylesheet"/>`;
       })
       .join('\n')}
   </head>

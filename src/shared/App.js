@@ -3,7 +3,8 @@ import routes from './routes'
 import { Route, Link, Redirect, Switch } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import NoMatch from './NoMatch'
-
+import axios from 'axios'
+ 
 class App extends Component {
   render() {
     return (

@@ -3,8 +3,7 @@ var webpack = require('webpack')
 var nodeExternals = require('webpack-node-externals')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const { ReactLoadablePlugin } = require('react-loadable/webpack')
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-// const WebpackBar = require('webpackbar')
+const MiniCssExtractPlugin = require("mini-css-extract-plugin")
 
 var browserConfig = {
   entry: './src/browser/index.js',
@@ -23,7 +22,7 @@ var browserConfig = {
         use: 'babel-loader'
       },
       {
-        test: /\.css$/,
+        test: /\.(scss|css)$/,
         exclude: /(node_modules|bower_components)/,
         use: [
           MiniCssExtractPlugin.loader,
@@ -32,7 +31,8 @@ var browserConfig = {
             options: {
               importLoaders: 1
             }
-          }
+          },
+          'sass-loader'
         ]
       }
     ]
@@ -50,7 +50,7 @@ var browserConfig = {
       // both options are optional
       filename: "vender.[chunkhash].css",
       chunkFilename: "[name].[chunkhash].css"
-    })
+    }),
     // new WebpackBar({
     //   color: '#f56be2',
     //   name: 'client'
@@ -77,7 +77,7 @@ var serverConfig = {
         use: 'babel-loader'
       },
       {
-        test: /\.css$/,
+        test: /\.(scss|css)$/,
         exclude: /(node_modules|bower_components)/,
         use: [
           {
@@ -85,7 +85,8 @@ var serverConfig = {
             options: {
               importLoaders: 1
             }
-          }
+          },
+          'sass-loader'
         ]
       }
     ]
