@@ -10,17 +10,23 @@
 
 - `npm run dev`
 
-  客户端渲染 启动在 http://localhost:3001/
+  同时启动客户端&服务端开发模式
+
+  服务端运行在 3000 端口，获取的 js,css 资源来自 3001
+
+  实现统一的 hot reload 开发
+
+- `npm run dev-client`
+
+  只客户端渲染 启动在 http://localhost:3001/
 
   已支持 hot reload 改动即时生效
 
-- `npm run ssr`
+- `npm run dev-ssr`
 
-  服务端渲染 启动在 http://localhost:3000/
+  只服务端渲染 启动在 http://localhost:3000/
 
   采用 webpack watch  即时编译 client & server 代码，刷新生效
-
-  待添加 hot reload 现在改动后需要刷新页面
 
 ## start script 部署脚本
 

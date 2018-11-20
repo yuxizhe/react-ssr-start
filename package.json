@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "dev": "node script/dev",
-    "ssr": "node script/build & nodemon server.js"
+    "dev-client": "node script/dev-client",
+    "dev-ssr": "node script/dev-ssr & nodemon server.js",
+    "dev": "npm run dev-client & npm run dev-ssr"
   },
   "author": "",
   "license": "MIT",

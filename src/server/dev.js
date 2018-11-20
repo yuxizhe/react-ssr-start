@@ -10,10 +10,20 @@ import App from '../shared/App'
 import routes from '../shared/routes'
 import stats from '../../public/react-loadable.json'
 
+import middleware from 'webpack-dev-middleware'
+import { browserConfig } from '../../webpack.config'
+
 const app = express()
 
 app.use(cors())
 app.use(express.static('public'))
+
+app.use(
+  middleware(browserConfig, {
+    // webpack-dev-middleware options
+    serverSideRender: true
+  })
+)
 
 app.get('*', (req, res, next) => {
   const activeRoute = routes.find(route => matchPath(req.url, route)) || {}
@@ -47,9 +57,7 @@ app.get('*', (req, res, next) => {
     <script>window.__INITIAL_DATA__ = ${serialize(data)}</script>
     ${styles
       .map(style => {
-        return `<link href="http://localhost:3001/${
-          style.file
-        }" rel="stylesheet"/>`
+        return `<link href="/${style.file}" rel="stylesheet"/>`
       })
       .join('\n')}
   </head>
@@ -57,9 +65,7 @@ app.get('*', (req, res, next) => {
   <body>
     <div id="app">${markup}</div>
   </body>
-  ${chunks
-    .map(chunk => `<script src="http://localhost:3001/${chunk.file}"></script>`)
-    .join('\n')}
+  ${chunks.map(chunk => `<script src="/${chunk.file}"></script>`).join('\n')}
 </html>
 `)
     })

@@ -5,7 +5,6 @@ const CleanWebpackPlugin = require('clean-webpack-plugin')
 const { ReactLoadablePlugin } = require('react-loadable/webpack')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const WebpackBar = require('webpackbar')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 var browserConfig = {
   entry: './src/browser/index.js',
@@ -13,7 +12,7 @@ var browserConfig = {
     path: path.resolve(__dirname, 'public'),
     filename: 'vender.js',
     chunkFilename: '[name].js',
-    publicPath: '/'
+    publicPath: 'http://localhost:3001/'
   },
   mode: 'development',
   devtool: 'inline-source-map',
@@ -69,7 +68,7 @@ var serverConfig = {
   output: {
     path: __dirname,
     filename: 'server.js',
-    publicPath: '/',
+    publicPath: 'http://localhost:3001/',
     libraryTarget: 'commonjs2'
   },
   module: {
