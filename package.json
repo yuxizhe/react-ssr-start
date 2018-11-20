@@ -4,8 +4,8 @@
   "main": "index.js",
   "scripts": {
     "watch": "webpack -w",
-    "dev": "NODE_ENV=development npm run watch & nodemon server.js",
-    "start": "nNODE_ENV=production node server.js",
+    "dev": "node scripts/start & nodemon server.js",
+    "start": "NODE_ENV=production node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -29,7 +29,10 @@
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
+    "browser-sync": "^2.26.3",
     "clean-webpack-plugin": "^1.0.0",
+    "gulp": "^3.9.1",
+    "gulp-nodemon": "^2.4.1",
     "mini-css-extract-plugin": "^0.4.4",
     "node-sass": "^4.10.0",
     "nodemon": "^1.12.5",
@@ -46,6 +49,8 @@
     "react-dom": "^16.3.0",
     "react-loadable": "^5.5.0",
     "react-router-dom": "^4.2.2",
-    "serialize-javascript": "^1.4.0"
+    "run-sequence": "^2.2.1",
+    "serialize-javascript": "^1.4.0",
+    "webpackbar": "^2.4.0"
   }
 }

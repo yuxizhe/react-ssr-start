@@ -8,7 +8,7 @@ import { getBundles } from 'react-loadable/webpack'
 import serialize from "serialize-javascript"
 import App from '../shared/App'
 import routes from '../shared/routes'
-import stats from '../../dist/react-loadable.json';
+import stats from '../../public/react-loadable.json';
 
 const app = express()
 
@@ -43,7 +43,7 @@ app.get("*", (req, res, next) => {
 <!doctype html>
 <html>
   <head>
-    <title>SSR with RR</title>
+    <title>SSR</title>
     <script>window.__INITIAL_DATA__ = ${serialize(data)}</script>
     ${styles
       .map(style => {
