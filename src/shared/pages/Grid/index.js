@@ -14,31 +14,32 @@ class Grid extends Component {
 
     this.state = {
       repos,
-      loading: repos ? false : true,
+      loading: repos ? false : true
     }
 
     this.fetchRepos = this.fetchRepos.bind(this)
   }
-  componentDidMount () {
+  componentDidMount() {
     if (!this.state.repos) {
       this.fetchRepos(this.props.match.params.id)
     }
   }
-  componentDidUpdate (prevProps, prevState) {
+  componentDidUpdate(prevProps, prevState) {
     if (prevProps.match.params.id !== this.props.match.params.id) {
       this.fetchRepos(this.props.match.params.id)
     }
   }
-  fetchRepos (lang) {
+  fetchRepos(lang) {
     this.setState(() => ({
       loading: true
     }))
 
-    this.props.fetchInitialData(lang)
-      .then((repos) => this.setState(() => ({
+    this.props.fetchInitialData(lang).then(repos =>
+      this.setState(() => ({
         repos,
-        loading: false,
-      })))
+        loading: false
+      }))
+    )
   }
   render() {
     const { loading, repos } = this.state
@@ -48,11 +49,15 @@ class Grid extends Component {
     }
 
     return (
-      <ul className='line'>
+      <ul className="line">
         {repos.map(({ name, owner, stargazers_count, html_url }) => (
-          <li key={name} style={{margin: 30}}>
+          <li key={name} style={{ margin: 30 }}>
             <ul>
-              <li><a className='name' href={html_url}>{name}</a></li>
+              <li>
+                <a className="name" href={html_url}>
+                  {name}
+                </a>
+              </li>
               <li>@{owner.login}</li>
               <li>{stargazers_count} stars</li>
             </ul>

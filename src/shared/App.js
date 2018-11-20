@@ -4,7 +4,7 @@ import { Route, Link, Redirect, Switch } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import NoMatch from './NoMatch'
 import { hot } from 'react-hot-loader'
- 
+
 class App extends Component {
   render() {
     return (
@@ -13,11 +13,14 @@ class App extends Component {
 
         <Switch>
           {routes.map(({ path, exact, component: Component, ...rest }) => (
-            <Route key={path} path={path} exact={exact} render={(props) => (
-              <Component {...props} {...rest} />
-            )} />
+            <Route
+              key={path}
+              path={path}
+              exact={exact}
+              render={props => <Component {...props} {...rest} />}
+            />
           ))}
-          <Route render={(props) => <NoMatch {...props} /> } />
+          <Route render={props => <NoMatch {...props} />} />
         </Switch>
       </div>
     )

@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "node script/dev",
-    "build": "node script/build & nodemon server.js"
+    "ssr": "node script/build & nodemon server.js"
   },
   "author": "",
   "license": "MIT",

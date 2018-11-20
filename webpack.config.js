@@ -1,9 +1,9 @@
-var path = require('path')
-var webpack = require('webpack')
-var nodeExternals = require('webpack-node-externals')
+const path = require('path')
+const webpack = require('webpack')
+const nodeExternals = require('webpack-node-externals')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const { ReactLoadablePlugin } = require('react-loadable/webpack')
-const MiniCssExtractPlugin = require("mini-css-extract-plugin")
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const WebpackBar = require('webpackbar')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
@@ -48,22 +48,17 @@ var browserConfig = {
     new webpack.HotModuleReplacementPlugin(),
     new CleanWebpackPlugin(['public']),
     new ReactLoadablePlugin({
-      filename: './dist/react-loadable.json'
+      filename: './public/react-loadable.json'
     }),
-    // new HtmlWebpackPlugin({
-    //   template: './src/browser/index.html'
-    // }),
     new MiniCssExtractPlugin({
-      // Options similar to the same options in webpackOptions.output
-      // both options are optional
-      filename: "vender.css",
-      chunkFilename: "[name].css"
+      filename: 'vender.css',
+      chunkFilename: '[name].css'
     }),
     new WebpackBar({
       color: '#f56be2',
       name: 'client'
-    }),
-  ],
+    })
+  ]
 }
 
 var serverConfig = {
