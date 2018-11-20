@@ -3,10 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "watch": "webpack -w",
-    "dev": "NODE_ENV=development npm run watch & nodemon server.js",
-    "start": "nNODE_ENV=production node server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "node script/dev",
+    "build": "node script/build & nodemon server.js"
   },
   "author": "",
   "license": "MIT",
@@ -19,7 +17,8 @@
     "plugins": [
       "syntax-dynamic-import",
       "react-loadable/babel",
-      "transform-object-rest-spread"
+      "transform-object-rest-spread",
+      "react-hot-loader/babel"
     ]
   },
   "devDependencies": {
@@ -30,11 +29,14 @@
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
     "clean-webpack-plugin": "^1.0.0",
+    "html-webpack-plugin": "^3.2.0",
     "mini-css-extract-plugin": "^0.4.4",
     "node-sass": "^4.10.0",
     "nodemon": "^1.12.5",
+    "react-hot-loader": "^4.3.12",
     "sass-loader": "^7.1.0",
     "webpack": "^4.25.1",
+    "webpack-dev-server-speedy": "^3.1.1",
     "webpack-node-externals": "^1.6.0"
   },
   "dependencies": {
