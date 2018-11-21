@@ -1,16 +1,21 @@
 const webpack = require('webpack')
-const browserConfig = require('../webpack.config')[0]
-const serverConfig = require('../webpack.config')[1]
+const browserConfig = require('../webpack.prod')[0]
+const serverConfig = require('../webpack.prod')[1]
 
 const clientCompiler = compile(browserConfig)
 const serverCompiler = compile(serverConfig)
 
-clientCompiler.watch({}, (err, stats) => {
+clientCompiler.run((err, stats) => {
   if (err) {
     console.error(err)
     return
   }
-  serverCompiler.watch({}, (err, stats) => {})
+  serverCompiler.run((err, stats) => {
+    if (err) {
+      console.error(err)
+      return
+    }
+  })
 })
 
 // Webpack compile in a try-catch

@@ -2,6 +2,8 @@
 
 ---
 
+> 测试链接 http://t.dappwind.com:31001/
+
 ## install script
 
 - `yarn`
@@ -15,6 +17,8 @@
   服务端运行在 3000 端口，获取的 js,css 资源来自 3001
 
   实现统一的 hot reload 开发
+
+  ps. 由于采用了 css-hot-loader , 所以开发模式下服务端渲染后页面会闪一下，生产模式不会有这个问题
 
 - `npm run dev`
 
@@ -30,7 +34,8 @@
 
 ## start script 部署脚本
 
-    待整理
+- `npm run build`
+- `node server.js` 或者 `pm2`
 
 ## 需求
 

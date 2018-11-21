@@ -4,8 +4,10 @@
   "main": "index.js",
   "scripts": {
     "dev": "node script/dev-client",
-    "dev-ssr": "node script/dev-ssr & nodemon server.js",
-    "dev-all": "npm run dev & npm run dev-ssr"
+    "dev-ssr": "node script/dev-ssr & NODE_ENV=development nodemon server.js",
+    "dev-all": "npm run dev & NODE_ENV=development npm run dev-ssr",
+    "build": "node script/prod-build",
+    "start": "node server.js"
   },
   "author": "",
   "license": "MIT",
@@ -32,16 +34,16 @@
     "clean-webpack-plugin": "^1.0.0",
     "css-hot-loader": "^1.4.2",
     "html-webpack-plugin": "^3.2.0",
+    "less": "^3.8.1",
     "less-loader": "^4.1.0",
     "mini-css-extract-plugin": "^0.4.4",
-    "node-sass": "^4.10.0",
     "nodemon": "^1.12.5",
     "react-hot-loader": "^4.3.12",
-    "sass-loader": "^7.1.0",
     "webpack": "^4.25.1",
     "webpack-dev-middleware": "^3.4.0",
     "webpack-hot-middleware": "^2.24.3",
-    "webpack-node-externals": "^1.6.0"
+    "webpack-node-externals": "^1.6.0",
+    "webpackbar": "^3.1.3"
   },
   "dependencies": {
     "axios": "^0.18.0",
