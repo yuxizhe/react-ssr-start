@@ -1,5 +1,5 @@
 import React from 'react'
-import './style.scss'
+import './style.less'
 export default function Home() {
   return (
     <div className="home">

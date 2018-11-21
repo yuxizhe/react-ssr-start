@@ -8,7 +8,7 @@
 
 ## develop scripts
 
-- `npm run dev`
+- `npm run dev-all`
 
   同时启动客户端&服务端开发模式
 
@@ -16,7 +16,7 @@
 
   实现统一的 hot reload 开发
 
-- `npm run dev-client`
+- `npm run dev`
 
   只客户端渲染 启动在 http://localhost:3001/
 

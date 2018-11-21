@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import './style.scss'
+import './style.less'
 class Grid extends Component {
   constructor(props) {
     super(props)

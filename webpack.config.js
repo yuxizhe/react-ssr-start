@@ -27,9 +27,10 @@ var browserConfig = {
         use: 'babel-loader'
       },
       {
-        test: /\.(scss|css)$/,
+        test: /\.(less|css)$/,
         exclude: /(node_modules|bower_components)/,
         use: [
+          'css-hot-loader',
           MiniCssExtractPlugin.loader,
           {
             loader: 'css-loader',
@@ -37,7 +38,7 @@ var browserConfig = {
               importLoaders: 1
             }
           },
-          'sass-loader'
+          'less-loader'
         ]
       }
     ]
@@ -82,7 +83,7 @@ var serverConfig = {
         use: 'babel-loader'
       },
       {
-        test: /\.(scss|css)$/,
+        test: /\.(less|css)$/,
         exclude: /(node_modules|bower_components)/,
         use: [
           {
@@ -91,7 +92,7 @@ var serverConfig = {
               importLoaders: 1
             }
           },
-          'sass-loader'
+          'less-loader'
         ]
       }
     ]
