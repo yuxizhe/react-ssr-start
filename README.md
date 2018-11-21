@@ -1,5 +1,7 @@
 # react ssr start
 
+react16 + react-router4 + webpack4 + mobx + SSR 服务端渲染 + HMR 热更新 + 代码分割
+
 ---
 
 > 测试链接 http://t.dappwind.com:31001/
