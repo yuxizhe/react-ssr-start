@@ -15,6 +15,9 @@ const app = express()
 app.use(cors())
 app.use(express.static('public'))
 
+// 代理
+require('../../middleware/proxy')(app)
+
 app.get('*', (req, res, next) => {
   const activeRoute = routes.find(route => matchPath(req.url, route)) || {}
 

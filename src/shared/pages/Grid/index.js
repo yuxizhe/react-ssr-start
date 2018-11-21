@@ -50,16 +50,16 @@ class Grid extends Component {
 
     return (
       <ul className="line">
-        {repos.map(({ name, owner, stargazers_count, html_url }) => (
-          <li key={name} style={{ margin: 30 }}>
+        {repos.data.map(({ user_infos, title, content_time, content_url }) => (
+          <li key={content_url} style={{ margin: 30 }}>
             <ul>
               <li>
-                <a className="name" href={html_url}>
-                  {name}
+                <a className="name" href={content_url}>
+                  {title}
                 </a>
               </li>
-              <li>@{owner.login}</li>
-              <li>{stargazers_count} stars</li>
+              <li>@{user_infos[0].user_nick_name}</li>
+              <li>{content_time} stars</li>
             </ul>
           </li>
         ))}

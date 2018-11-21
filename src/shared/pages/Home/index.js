@@ -3,7 +3,7 @@ import './style.scss'
 export default function Home() {
   return (
     <div className="home">
-      Select a Language
+      雪球
       <p className="name">xueqiu</p>
     </div>
   )

@@ -3,25 +3,21 @@ import { NavLink } from 'react-router-dom'
 
 export default function Navbar() {
   const languages = [
+    // {
+    //   name: '全部',
+    //   param: ''
+    // },
     {
-      name: 'All',
-      param: 'all'
+      name: '经理言论',
+      param: 'MANAGER_SPEECH'
     },
     {
-      name: 'JavaScript',
-      param: 'javascript'
+      name: '投研报告',
+      param: 'RESEARCH_REPORT'
     },
     {
-      name: 'Ruby',
-      param: 'ruby'
-    },
-    {
-      name: 'Python',
-      param: 'python'
-    },
-    {
-      name: 'Java',
-      param: 'java'
+      name: '经理采访',
+      param: 'PRIVATE_INTERVIEW'
     }
   ]
 

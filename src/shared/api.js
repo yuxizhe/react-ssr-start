@@ -1,15 +1,25 @@
 import axios from 'axios'
 
-export function fetchPopularRepos(language = 'all') {
-  const encodedURI = encodeURI(
-    `https://api.github.com/search/repositories?q=stars:>1+language:${language}&sort=stars&order=desc&type=Repositories`
-  )
+export function fetchPopularRepos(category = 'MANAGER_SPEECH') {
+  var datas = {
+    order_by: 'content_time',
+    category: category
+  }
+  var url = '/xq/private_fund/v3/community/list.json'
 
-  return axios(encodedURI)
+  if (!__isBrowser__) {
+    url = url.replace('/xq', '')
+    url = 'https://xueqiu.com' + url
+  }
+
+  var res = axios(url, {
+    params: datas
+  })
     .then(data => data.data)
-    .then(repos => repos.items)
     .catch(error => {
-      console.warn(error)
+      console.warn('api error')
       return null
     })
+
+  return res
 }
