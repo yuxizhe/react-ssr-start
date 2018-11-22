@@ -6,8 +6,9 @@ import { observer, inject } from 'mobx-react'
 @inject('Store')
 @observer
 class Home extends Component {
-  componentWillMount() {
-    let { userInfo, updateName } = this.props.Store
+  constructor(props) {
+    super(props)
+    let { updateName } = props.Store
     updateName('xueqiu')
   }
   render() {
