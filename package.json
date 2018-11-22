@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "dev": "node script/dev-client",
-    "dev-ssr": "node script/dev-ssr & NODE_ENV=development nodemon server.js",
-    "dev-all": "npm run dev & NODE_ENV=development npm run dev-ssr",
+    "dev": "NODE_ENV=client-dev node script/dev",
+    "dev-all": "NODE_ENV=ssr-dev node script/dev & NODE_ENV=development nodemon server.js",
+    "dev-ssr": "node script/dev-server & NODE_ENV=development nodemon server.js",
     "build": "node script/prod-build",
     "start": "node server.js"
   },

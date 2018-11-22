@@ -1,11 +1,16 @@
 const webpack = require('webpack')
-const middleware = require('webpack-dev-middleware')
+const webpackDevMiddleware = require('webpack-dev-middleware')
+const webpackHotMiddleware = require('webpack-hot-middleware')
 const express = require('express')
 const cors = require('cors')
 const devConfig = require('../webpack.config')[0]
+const serverConfig = require('../webpack.config')[1]
 // const path = require('path')
 // const devServer = require('webpack-dev-server-speedy')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+
+const isClientDev = process.env.NODE_ENV === 'client-dev'
+const isSSRDev = process.env.NODE_ENV === 'ssr-dev'
 
 const app = express()
 
@@ -15,9 +20,11 @@ app.use(cors())
 // 代理
 require('../middleware/proxy')(app)
 
-devConfig.plugins.push(
-  new HtmlWebpackPlugin({ template: './src/browser/index.html' })
-)
+if (isClientDev) {
+  devConfig.plugins.push(
+    new HtmlWebpackPlugin({ template: './src/browser/index.html' })
+  )
+}
 
 // Webpack compile in a try-catch
 function compile(config) {
@@ -48,8 +55,15 @@ const devCompiled = compile(devConfig)
 // devServer.addDevServerEntrypoints(devConfig, dev)
 // const clientDevServer = new devServer(another, dev)
 
-app.use(middleware(devCompiled, { logLevel: 'error' }))
+app.use(
+  webpackDevMiddleware(devCompiled, { logLevel: 'error', writeToDisk: true })
+)
 
-app.use(require('webpack-hot-middleware')(devCompiled))
+app.use(webpackHotMiddleware(devCompiled))
+
+if (isSSRDev) {
+  const serverCompiler = compile(serverConfig)
+  serverCompiler.watch({}, (err, stats) => {})
+}
 
 app.listen(3001, () => console.log('client listening on port 3001!'))

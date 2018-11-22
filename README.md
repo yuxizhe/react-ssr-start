@@ -20,11 +20,15 @@ react16 + react-router4 + webpack4 + mobx + SSR 服务端渲染 + HMR 热更新 
 
   实现统一的 hot reload 开发
 
+  开发入口 http://localhost:3000/
+
   ps. 由于采用了 css-hot-loader , 所以开发模式下服务端渲染后页面会闪一下，生产模式不会有这个问题
 
 - `npm run dev`
 
-  只客户端渲染 启动在 http://localhost:3001/
+  只客户端渲染 启动在 3001
+
+  开发入口 http://localhost:3001/
 
   已支持 hot reload 改动即时生效
 
